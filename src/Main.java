@@ -47,6 +47,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
     Scanner scanner = new Scanner(System.in);
     requestFromConsole(scanner);
+
   }
 
   public static Map<String, String> readInput(String filename) throws IOException {
@@ -60,6 +61,7 @@ public class Main {
       String wordToKey = dict.toLowerCase().substring(0, sepIndex);
       String contextToValue = dict.toLowerCase().substring(sepIndex + 1);
       dictionary.put(wordToKey, contextToValue);
+
     }
     return dictionary;
   }
@@ -67,7 +69,7 @@ public class Main {
   public static void requestFromConsole(Scanner scanner) throws IOException {
     System.out.print("Введите слово: ");
     String word1 = scanner.nextLine().toLowerCase();
-    String value = readInput("res/dict.txt").get(word1);
+    String value = readInput("dict.txt").get(word1);
     if (value == null) {
       System.out.println("Слово не найдено");
     } else {
