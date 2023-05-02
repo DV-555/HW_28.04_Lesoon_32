@@ -46,7 +46,7 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
     Scanner scanner = new Scanner(System.in);
-
+    requestFromConsole(scanner);
   }
 
   public static Map<String, String> readInput(String filename) throws IOException {
@@ -62,5 +62,16 @@ public class Main {
       dictionary.put(wordToKey, contextToValue);
     }
     return dictionary;
+  }
+
+  public static void requestFromConsole(Scanner scanner) throws IOException {
+    System.out.print("Введите слово: ");
+    String word1 = scanner.nextLine().toLowerCase();
+    String value = readInput("res/dict.txt").get(word1);
+    if (value == null) {
+      System.out.println("Слово не найдено");
+    } else {
+      System.out.println("Значение слова : " + value);
+    }
   }
 }
