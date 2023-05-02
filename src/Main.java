@@ -1,3 +1,9 @@
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 public class Main {
   /*-----------------Задача 1
 /*Программисты, как вы уже знаете, постоянно учатся, а в общении между собой используют
@@ -36,7 +42,25 @@ public class Main {
 /*Не найдено
 /*код, который нужен, чтобы исправить несовершенство ранее написанного кода */
 
-  public static void main(String[] args) {
-    System.out.println("Hello world!");
+  private static final String SEP = ": ";
+
+  public static void main(String[] args) throws IOException {
+    Scanner scanner = new Scanner(System.in);
+
+  }
+
+  public static Map<String, String> readInput(String filename) throws IOException {
+    Map<String, String> dictionary = new HashMap<>();
+    Scanner scanner = new Scanner(new FileReader(filename));
+    int n = scanner.nextInt(); // Считали сканером число, количество строк
+    scanner.nextLine();        // Перешли на следующую строку
+    for (int i = 0; i < n; i++) {
+      String dict = scanner.nextLine();
+      int sepIndex = dict.indexOf(SEP);
+      String wordToKey = dict.toLowerCase().substring(0, sepIndex);
+      String contextToValue = dict.toLowerCase().substring(sepIndex + 1);
+      dictionary.put(wordToKey, contextToValue);
+    }
+    return dictionary;
   }
 }
